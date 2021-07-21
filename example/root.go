@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"rabbitmq/example/simple"
+	"rabbitmq/example/queue"
 )
 
 func main() {
 	var err error
-	mq := simple.NewRabbitMq("", "这是个测试", simple.Url)
+	mq := queue.NewRabbitMq("", "这是个测试", queue.Url)
 	err = mq.Connection()
 	err = mq.NewQueue()
 	err = mq.SendMsg("12343435")

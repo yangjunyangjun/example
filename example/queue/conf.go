@@ -1,4 +1,4 @@
-package simple
+package queue
 
 const (
 	WaitTime = 3 //重试等待时间
