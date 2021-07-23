@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/streadway/amqp"
-	"rabbitmq/example/change"
-	"rabbitmq/example/queue"
+	"example/rabbitmq/change"
+	"example/rabbitmq/queue"
 	"testing"
 	"time"
 )
@@ -34,7 +34,7 @@ func TestConsume(t *testing.T) {
 	mq := change.NewRabbitMq("test1", "", "123")
 	_, err := mq.NewChannel(queue.Url)
 	fmt.Println(err)
-	err = mq.Consume("direct",test)
+	err = mq.Consume("direct", test)
 	fmt.Println(err)
 }
 

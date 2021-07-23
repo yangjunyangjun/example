@@ -1,4 +1,4 @@
-module rabbitmq
+module example
 
 go 1.15
 
