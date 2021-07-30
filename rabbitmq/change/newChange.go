@@ -4,10 +4,13 @@ import (
 	"context"
 	"fmt"
 	"github.com/streadway/amqp"
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
 )
+
+var logger = log.New(os.Stdout, "[rabbitmq]:", log.LstdFlags)
 
 type rabbitMq struct {
 	Conn     *amqp.Connection
@@ -29,6 +32,7 @@ func NewRabbitMq(exChange, queue, key string) *rabbitMq {
 func (mq *rabbitMq) NewChannel(url string) (channel *amqp.Channel, err error) {
 	mq.Conn, err = amqp.Dial(url)
 	if err != nil {
+		log.Println("dial rabbitmq error", err)
 		return nil, err
 	}
 	mq.Channel, err = mq.Conn.Channel()
